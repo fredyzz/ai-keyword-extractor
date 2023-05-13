@@ -11,25 +11,25 @@ function ApiKeyInput({ apiKey, setApiKey = NOOP }) {
   return (
     <div className="mb-4">
       <label
-        htmlFor="apiKey"
         className="block text-sm font-medium text-gray-700 mb-1"
+        htmlFor="apiKey"
       >
         API Key
       </label>
       <div className="relative">
         <input
+          className="p-3 pl-4 pr-10 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300"
           id="apiKey"
+          onChange={handleOnChange}
+          placeholder="Enter OpenAI API Key"
           type="text"
           value={apiKey || ""}
-          onChange={handleOnChange}
-          className="p-3 pl-4 pr-10 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300"
-          placeholder="Enter OpenAI API Key"
         />
         {apiKey && (
           <AiFillDelete
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-500 cursor-pointer"
-            size={20}
             onClick={clearInput}
+            size={20}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-500 cursor-pointer"
           />
         )}
       </div>
