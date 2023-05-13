@@ -11,7 +11,6 @@ const useOpenAi = () => {
 
     setIsLoading(true);
 
-    console.log(apiKey);
     const requestOptions = {
       method: "POST",
       headers: {
@@ -30,6 +29,13 @@ const useOpenAi = () => {
     try {
       const response = await fetch(OPENAI_API_URL, requestOptions);
       const responseJson = await response.json();
+
+      if (responseJson.error) {
+        setIsLoading(false);
+        setError(responseJson.error);
+        return;
+      }
+
       const data = responseJson.choices[0].text
         .split(",")
         .map((keyword) => keyword.trim());
